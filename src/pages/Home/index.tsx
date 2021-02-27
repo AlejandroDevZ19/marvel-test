@@ -13,35 +13,35 @@ const Home: FC = ()=>{
             id: 1,
             title: 'Super Man',
             description: 'Pelicula del primer super heroe de la historia',
-            img: '',
+            img: 'https://p4.wallpaperbetter.com/wallpaper/853/426/478/fiction-costume-poster-superhero-wallpaper-preview.jpg',
             positiveRate: 100, 
             negativeRate: 10,
         }, {
             id: 2,
             title: 'Thor',
             description: 'Película del Dios del trueno',
-            img: '',
+            img: 'https://wallpapersplanet.net/sites/default/files/thor-wallpapers-40454-690098.png',
             positiveRate: 10, 
             negativeRate: 10,
         },{
             id: 3,
             title: 'Batman',
             description: 'Mejor película de super heroes',
-            img: '',
+            img: 'https://i1.wp.com/www.canalfreak.net/wp-content/uploads/2018/07/batman-el-caballero-oscuro-de-la-noche.jpg?resize=1154%2C640',
             positiveRate: 10, 
             negativeRate: 10,
         },{
             id: 4,
             title: 'Spiderman',
             description: 'Petter Parker is back :D',
-            img: '',
+            img: 'https://www.mandatory.com/assets/uploads/2011/09/file_174882_0_spidey_retro_header-1280x720.jpg',
             positiveRate: 10, 
             negativeRate: 10,
         }];
 
         const renderCard = JsonMovieDataFake.map((item)=>{
             return(
-                <Col xl={6} key={item?.id ?? 1}>
+                <Col xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} key={item?.id ?? 1}>
                     <MovieCard img={item.img} title={item.title} description={item.description} />
                 </Col>
             )

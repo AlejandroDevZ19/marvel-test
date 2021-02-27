@@ -3,7 +3,7 @@ import './App.css';
 import {Route,  BrowserRouter, useLocation, Switch, Redirect} from 'react-router-dom';
 import Home from './pages/Home'
 import ReactDOM from "react-dom";
-import {Col,Row} from 'react-grid-system';
+import {Col,Row, Container} from 'react-grid-system';
 
 function App() {
 
@@ -26,9 +26,10 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-        <div className="App-body">
+        <Container>
+
           {allRoutes}
-        </div>
+        </Container>
       <footer>
        <p>Test Marvel por Alejandro Zú</p>
       </footer>
