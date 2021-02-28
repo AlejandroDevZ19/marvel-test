@@ -6,29 +6,31 @@ import { Container, Row, Col } from 'react-grid-system';
 import styled from '@emotion/styled/';
 import {css} from '@emotion/react/macro';
 import Button from '../../atoms/Button';
-import PercentageBar from '../PercentageBar';
+import PercentageBar from '../../molecules/PercentageBar';
 import { FiThumbsUp , FiThumbsDown} from "react-icons/fi";
 
 
+
 interface Props {
-    img: string;
-    title: string;
-    description: string;
-    positiveRate: number;
-    negativeRate: number;
+    img?: string;
+    title?: string;
+    description?: string;
+    positiveRate?: number;
+    negativeRate?: number;
     iconType?: string;
     onClick?: () => void;
     key?: number;
   }
 
-  const CardContainer = styled.div<{img?: string}>`
+  const BannerContainer = styled.div<{img?: string}>`
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+    
       margin-bottom: 25px;
       background: ${(props) =>
         props.img ? `url(${props.img})` : `rgba(228,236,250,0.3)`};
-        height: 430px;
+        height: 70vh;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -47,12 +49,12 @@ const InfoContainer = styled.div<{img?: string}>`
 }
 `;
 
-  const MovieCard: FC<Props> =(
+  const Banner: FC<Props> =(
     { title,
       description,
       img,
-      positiveRate,
-      negativeRate}) =>{
+      positiveRate=20,
+      negativeRate=10}) =>{
 
         const renderIcon = useCallback((positiveRateValue, negativeRateValue)=>{
             if(positiveRateValue > negativeRateValue){
@@ -60,64 +62,79 @@ const InfoContainer = styled.div<{img?: string}>`
                 <div>
                   <FiThumbsUp color={'#FFF'} size={22}/>
                 </div>
-                 
-            
               )
             } else{
               return(
                 <div>
                      <FiThumbsDown color={'#FFF'} size={22}/>
-                </div>
-                 
-                
+                </div>         
               )
             }
         },[]);
 
+    const voteCard = useCallback(()=>{
 
         return(
-            <CardContainer img={img}>
-              <div css={infoWrapper}>
-                <div css={iconBackground}>
-                  {renderIcon(positiveRate, negativeRate)}
-                </div>
-                <div css={infoCard}>
+            <div css={infoCard}>
+                <Text
+                      text={'Dino tu opinion sobre'}
+                      fontSize={18}
+                      color={'#fefefe'}
+                      fontWeight={200}
+                  />
+                <Text
+                      text={'Ironman?'}
+                      fontSize={35}
+                      color={'#fefefe'}
+                      fontWeight={800}
+                  />
                   <Text
-                      text={title}
-                      fontSize={32}
+                      text={'dednakendkandknd aendaekndaek dnakendaenda'}
+                      fontSize={22}
+                      color={'#fefefe'}
+                      fontWeight={200}
+                  />
+                <Text
+                      text={'¿Cuál es tu voto?'}
+                      fontSize={24}
                       color={'#fefefe'}
                       fontWeight={700}
                   />
-                  <Text
-                      text={description}
-                      fontSize={16}
-                      color={'#fefefe'}
-                      fontWeight={400}
-                  />
-                  <Button
-                      backgroundColor={'#fff'}
-                      text={'Ver detalle'}
-                      outline
-                      />
-                </div>
-              </div>
-              
-              
-              <PercentageBar positiveRate={positiveRate} negativeRate={negativeRate} />
-            </CardContainer>
-        )
-    }
 
-  export default memo(MovieCard);
+                <Row>
+                    <Col>
+                        <FiThumbsUp color={'#FFF'} size={22}/>
+                    </Col>
+                    <Col><FiThumbsDown color={'#FFF'} size={22}/>
+                    </Col>
+                </Row>
+            </div>
+        )
+
+    },[])
+
+
+
+    return(
+        <BannerContainer img={img}>
+           <div css={infoWrapper}>
+             {voteCard()}
+            </div>
+         <PercentageBar positiveRate={positiveRate} negativeRate={negativeRate} />
+        </BannerContainer>
+        );
+    };
+
+  export default memo(Banner);
 
   const infoCard = css({
+    background: 'rgba(0,0,0,0.3)',
     display:'flex',
     flexDirection:'column',
-    alignItems:'flex-start',
-    padding:5,
-    marginBottom:15,
-    overflow:'hidden',
-    
+    padding:20,
+    margin:25,
+    backdropFilter: 'blur(5px)',
+    borderRadius:10,
     });
   const iconBackground = css({
       padding:10,
