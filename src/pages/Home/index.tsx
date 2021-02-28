@@ -2,8 +2,10 @@
 import React,{FC, memo} from 'react';
 import Button from '../../common/components/atoms/Button';
 import MovieCard from '../../common/components/molecules/MovieCard'
+import Text from '../../common/components/atoms/Text';
 import {Container, Col,Row} from 'react-grid-system';
 import {css} from '@emotion/react/macro';
+import PercentageBar from '../../common/components/molecules/PercentageBar';
 
 const Home: FC = ()=>{
 
@@ -14,8 +16,8 @@ const Home: FC = ()=>{
             title: 'Super Man',
             description: 'Pelicula del primer super heroe de la historia',
             img: 'https://p4.wallpaperbetter.com/wallpaper/853/426/478/fiction-costume-poster-superhero-wallpaper-preview.jpg',
-            positiveRate: 100, 
-            negativeRate: 10,
+            positiveRate: 60, 
+            negativeRate: 40,
         }, {
             id: 2,
             title: 'Thor',
@@ -42,13 +44,25 @@ const Home: FC = ()=>{
         const renderCard = JsonMovieDataFake.map((item)=>{
             return(
                 <Col xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} key={item?.id ?? 1}>
-                    <MovieCard img={item.img} title={item.title} description={item.description} />
+                    <MovieCard 
+                        img={item.img} 
+                        title={item.title} 
+                        description={item.description}
+                        positiveRate={item.positiveRate}
+                        negativeRate={item.negativeRate} />
                 </Col>
             )
         });
 
 return(
     <Container>
+        <PercentageBar negativeRate={2} positiveRate={10}/>
+       <Text
+        text={'Super heroes anteriores'}
+        fontSize={32}
+        color={'#808080'}
+        fontWeight={400}
+        />
         <Row>{renderCard}</Row>
     </Container>
 )
@@ -56,16 +70,16 @@ return(
 
 export default memo(Home);
 
-const fillWidth = css({
-    width: '100%',
-    });
+    const fillWidth = css({
+        width: '100%',
+     });
     const modalContainer = css({
         padding: 5,
         display: 'flex',
         flexDirection:'column',
         width: '100%',
-        });
-        const inputsRow = css({
+    });
+    const inputsRow = css({
         width: '100%',
         marginTop:15,
-        });
+     });
