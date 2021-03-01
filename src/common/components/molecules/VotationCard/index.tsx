@@ -2,11 +2,9 @@
 
 import React, {FC, memo, useCallback} from 'react';
 import Text from '../../atoms/Text';
-import { Container, Row, Col } from 'react-grid-system';
-import styled from '@emotion/styled/';
+import {Row, Col } from 'react-grid-system';
 import {css} from '@emotion/react/macro';
 import Button from '../../atoms/Button';
-import PercentageBar from '../PercentageBar';
 import { FiThumbsUp , FiThumbsDown} from "react-icons/fi";
 import Separator from '../../atoms/Separator';
 import {
@@ -133,13 +131,12 @@ interface Props {
 
   export default memo(VotationCard);
   const infoCard = css({
-    background: 'rgba(0,0,0,0.3)',
+    background: 'rgba(0,0,0,0.2)',
     display:'flex',
     flexDirection:'column',
     padding:30,
     backdropFilter: 'blur(5px)',
     borderRadius:10,
-
     justifyContent:'space-between',
     marginBottom:30,
     });

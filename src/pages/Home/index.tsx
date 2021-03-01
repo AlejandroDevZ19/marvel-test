@@ -89,7 +89,7 @@ return(
                 <div css={fillWidth}>
                     <Text
                         text={'Super heroes anteriores'}
-                        fontSize={35}
+                        fontSize={30}
                         color={'#001A4F'}
                         fontWeight={800}
                     /> 

@@ -26,6 +26,7 @@ interface Props {
       border-radius:   0px 0px 10px 10px;
       overflow:hidden;
       width:100%;
+      padding-top:100px;
       margin-bottom: 25px;
       background: ${(props) =>
         props.img ? `url(${props.img})` : `rgba(228,236,250,0.3)`};
