@@ -63,7 +63,7 @@ const Home: FC = ()=>{
 
         const renderCard = JsonMovieDataFake.map((item)=>{
             return(
-                <Col  xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} key={item?.id ?? 1}>
+                <Col xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} key={item?.id ?? 1}>
                     <MovieCard 
                         img={item.img} 
                         title={item.title} 

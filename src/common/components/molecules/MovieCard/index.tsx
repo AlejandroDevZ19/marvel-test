@@ -8,6 +8,7 @@ import {css} from '@emotion/react/macro';
 import Button from '../../atoms/Button';
 import PercentageBar from '../PercentageBar';
 import { FiThumbsUp , FiThumbsDown} from "react-icons/fi";
+import Separator from '../../atoms/Separator';
 
 
 interface Props {
@@ -91,39 +92,45 @@ const IconContainer = styled.div<{color?: string}>`
         return(
             <CardContainer img={img}>
               <div css={infoWrapper}>
-                <div css={GeneralinfoWrapper}>
-                <IconContainer color={iconColor(positiveRate, negativeRate)}>
-                  {renderIcon(positiveRate, negativeRate)}
-                </IconContainer>
-               
-                <div css={infoCard}>
-                  <Text
-                      text={title}
-                      fontSize={32}
-                      color={'#fefefe'}
-                      fontWeight={700}
-                  />
-                  <Text
-                      text={description}
-                      fontSize={16}
-                      color={'#fefefe'}
-                      fontWeight={400}
-                  />
-                  <Button
-                      backgroundColor={'#fff'}
-                      text={'Ver detalle'}
-                      outline
+            
+                    <IconContainer color={iconColor(positiveRate, negativeRate)}>
+                      {renderIcon(positiveRate, negativeRate)}
+                    </IconContainer>
+                  
+                    <div css={infoCard}>
+                      <Text
+                          text={title}
+                          fontSize={32}
+                          color={'#fefefe'}
+                          fontWeight={700}
                       />
-                </div>
-                </div>
-                <div css={timeText}>
-                  <Text
-                    text={'Hace 1 mes'}
-                    fontSize={16}
-                    color={'#fefefe'}
-                    fontWeight={400}
-                    />
-                </div>
+                      <Text
+                          text={description}
+                          fontSize={16}
+                          color={'#fefefe'}
+                          fontWeight={400}
+                      />
+                      <Separator size={15} direction={'horizontal'}/>
+                      <div css={GeneralinfoWrapper}> 
+                        <Button
+                            backgroundColor={'#fff'}
+                            text={'Ver detalle'}
+                            outline
+                            />
+                        <div css={timeText}>
+                          <Text
+                            text={'Hace 1 mes'}
+                            fontSize={14}
+                            color={'#fefefe'}
+                            fontWeight={400}
+                            />
+                      </div>
+                      </div>
+
+
+            
+                  </div>
+
               </div>
               
               
@@ -136,9 +143,10 @@ const IconContainer = styled.div<{color?: string}>`
 
   const infoCard = css({
     display:'flex',
+    width:'100%',
     flexDirection:'column',
     alignItems:'flex-start',
-    padding:5,
+    padding:10,
     marginBottom:15,
     overflow:'hidden',
     });
@@ -146,12 +154,10 @@ const IconContainer = styled.div<{color?: string}>`
       display:'flex',
       flexDirection:'column',
       justifyContent:'flex-end',
-      padding:5,
-      marginBottom:15,
-      marginRight:10,
       });
       const GeneralinfoWrapper=css({
         display:'flex',
+        width:'100%',
         flexDirection:'row', 
         justifyContent:'space-between',
       });
@@ -159,7 +165,7 @@ const IconContainer = styled.div<{color?: string}>`
 
   const infoWrapper = css({
     display:'flex',
-    flexDirection:'row', 
-    justifyContent:'space-between',
+    width:'100%',
+    flexDirection:'row',
     background: 'linear-gradient(0deg,rgba(0,0,0,8),rgba(0,0,0,0.5),rgba(0,0,0,0))',
   })
