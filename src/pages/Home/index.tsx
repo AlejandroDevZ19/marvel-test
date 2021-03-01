@@ -59,7 +59,7 @@ return(
     <Container>
         <Banner img={'https://cdn.wallpapersafari.com/13/60/2hrn9Z.jpg'} />
         <Notification />
-         <Text
+        <Text
             text={'Super heroes anteriores'}
             fontSize={32}
             color={'#808080'}

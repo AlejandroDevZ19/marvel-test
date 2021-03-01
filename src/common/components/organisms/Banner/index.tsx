@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import React, {FC, memo, useCallback} from 'react';
+import React, {FC, memo, useCallback, useState} from 'react';
 import Text from '../../atoms/Text';
 import { Container, Row, Col } from 'react-grid-system';
 import styled from '@emotion/styled/';
@@ -8,6 +8,7 @@ import {css} from '@emotion/react/macro';
 import Button from '../../atoms/Button';
 import PercentageBar from '../../molecules/PercentageBar';
 import { FiThumbsUp , FiThumbsDown} from "react-icons/fi";
+import { constants } from 'crypto';
 
 
 
@@ -56,20 +57,28 @@ const InfoContainer = styled.div<{img?: string}>`
       positiveRate=20,
       negativeRate=10}) =>{
 
-        const renderIcon = useCallback((positiveRateValue, negativeRateValue)=>{
-            if(positiveRateValue > negativeRateValue){
-              return (
-                <div>
-                  <FiThumbsUp color={'#FFF'} size={22}/>
-                </div>
-              )
-            } else{
-              return(
-                <div>
-                     <FiThumbsDown color={'#FFF'} size={22}/>
-                </div>         
-              )
-            }
+        let initialPositiveRate: number = 1;
+        let initialNegativeRate: number = 1;
+
+        const [rates, setRates] = useState({
+            initialPositiveRate: 1,
+            initialNegativeRate: 1
+        })
+
+        console.log('voto positivo', rates)
+
+        const savePositiveRate = useCallback(()=>{
+            console.log('aouchh');
+            setRates((state:any)=>{
+                return {initialPositiveRate: state.initialPositiveRate +1, initialNegativeRate:state.initialNegativeRate};
+            });
+          
+        },[]);
+        const saveNegativeRate = useCallback(()=>{
+            setRates((state:any)=>{
+                return {initialPositiveRate: state.initialPositiveRate, initialNegativeRate:state.initialNegativeRate+1};
+            });
+    
         },[]);
 
     const voteCard = useCallback(()=>{
@@ -102,11 +111,21 @@ const InfoContainer = styled.div<{img?: string}>`
                   />
 
                 <Row>
-                    <Col>
+                    <Col sm={6}>
+                        <div onClick={()=>savePositiveRate()}>
                         <FiThumbsUp color={'#FFF'} size={22}/>
+                        </div>
+                        
                     </Col>
-                    <Col><FiThumbsDown color={'#FFF'} size={22}/>
+                    <div>
+                    <Col sm={6}>
+                        <div onClick={()=>saveNegativeRate()}>
+                            <FiThumbsDown color={'#FFF'} size={22}/>
+                        </div>
+                        
                     </Col>
+                    </div>
+                    
                 </Row>
             </div>
         )
@@ -120,7 +139,7 @@ const InfoContainer = styled.div<{img?: string}>`
            <div css={infoWrapper}>
              {voteCard()}
             </div>
-         <PercentageBar positiveRate={positiveRate} negativeRate={negativeRate} />
+         <PercentageBar positiveRate={rates.initialPositiveRate} negativeRate={rates.initialNegativeRate} />
         </BannerContainer>
         );
     };

@@ -26,6 +26,8 @@ interface Props {
       flex-direction: column;
       justify-content: flex-end;
       margin-bottom: 25px;
+      border-radius:12px;
+      overflow:hidden;
       background: ${(props) =>
         props.img ? `url(${props.img})` : `rgba(228,236,250,0.3)`};
         height: 430px;
@@ -60,16 +62,12 @@ const InfoContainer = styled.div<{img?: string}>`
                 <div>
                   <FiThumbsUp color={'#FFF'} size={22}/>
                 </div>
-                 
-            
               )
             } else{
               return(
                 <div>
                      <FiThumbsDown color={'#FFF'} size={22}/>
-                </div>
-                 
-                
+                </div>         
               )
             }
         },[]);

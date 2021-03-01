@@ -54,6 +54,7 @@ const container = css({
     justifyContent:'space-between',
     padding:15,
     background: '#DCE4ED',
+    borderRadius:10,
     });
 const rightSide = css({
     display: 'flex',
