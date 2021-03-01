@@ -1,4 +1,4 @@
-# Desarrolo para prubas técnicas Existaya
+# Desarrollo para pruebas técnicas Existaya -Alejandro Zuñiga
 
     *Este proyecto lo desarrollé con React.
     *Cada parte del front está desarrollado con componentes funcionales con sus respectivos Props (atributos del componente).
