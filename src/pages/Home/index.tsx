@@ -8,6 +8,21 @@ import {css} from '@emotion/react/macro';
 import PercentageBar from '../../common/components/molecules/PercentageBar';
 import Notification from '../../common/components/molecules/Notification';
 import Banner from '../../common/components/organisms/Banner';
+import styled from '@emotion/styled/';
+import Separator from '../../common/components/atoms/Separator';
+
+const BodyContainer = styled.div<{img?: string}>`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    @media (max-width: 768px) {
+      width: 90%;
+    }
+
+}
+`;
+
 const Home: FC = ()=>{
 
     /*Suponiendo que esta información vendría de back*/
@@ -15,6 +30,7 @@ const Home: FC = ()=>{
         {
             id: 1,
             title: 'Superman',
+            publicationDate: '',
             description: 'Yo nisiquiera soy de marvel pero bueno :D',
             img: 'https://p4.wallpaperbetter.com/wallpaper/853/426/478/fiction-costume-poster-superhero-wallpaper-preview.jpg',
             positiveRate: 60, 
@@ -44,7 +60,7 @@ const Home: FC = ()=>{
 
         const renderCard = JsonMovieDataFake.map((item)=>{
             return(
-                <Col xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} key={item?.id ?? 1}>
+                <Col  xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} key={item?.id ?? 1}>
                     <MovieCard 
                         img={item.img} 
                         title={item.title} 
@@ -56,32 +72,44 @@ const Home: FC = ()=>{
         });
 
 return(
-    <Container>
+    <div css={homeContainer}>
         <Banner img={'https://cdn.wallpapersafari.com/13/60/2hrn9Z.jpg'} />
-        <Notification />
-        <Text
-            text={'Super heroes anteriores'}
-            fontSize={32}
-            color={'#808080'}
-            fontWeight={400}
-        />
-        <Row>{renderCard}</Row>
-    </Container>
+        <div css={alignCenter}>
+            <BodyContainer>
+                <Separator size={15} direction={'horizontal'}/>
+                <Notification />
+                <Separator size={40} direction={'horizontal'}/>
+                <div >
+                    <Text
+                        text={'Super heroes anteriores'}
+                        fontSize={40}
+                        color={'#001A4F'}
+                        fontWeight={800}
+                    /> 
+                </div>
+                <Separator size={40} direction={'horizontal'}/>      
+                <Row css={fillWidth}>{renderCard}</Row>
+            </BodyContainer>
+        </div>
+    </div>
     );
 };
 
 export default memo(Home);
 
-    const fillWidth = css({
+    const alignCenter = css({
         width: '100%',
+        display: 'flex',
+        flexDirection:'column', 
+        alignItems:'center'
      });
-    const modalContainer = css({
-        padding: 5,
+    const homeContainer = css({
+        padding: 0,
         display: 'flex',
         flexDirection:'column',
-        width: '100%',
+        width:'100%' 
     });
-    const inputsRow = css({
-        width: '100%',
-        marginTop:15,
-     });
+    const fillWidth= css({
+        width:'100%',
+    });
+    

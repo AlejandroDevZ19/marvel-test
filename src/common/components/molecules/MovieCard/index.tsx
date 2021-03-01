@@ -30,7 +30,7 @@ interface Props {
       overflow:hidden;
       background: ${(props) =>
         props.img ? `url(${props.img})` : `rgba(228,236,250,0.3)`};
-        height: 430px;
+        height: 500px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -41,11 +41,15 @@ interface Props {
        
   }
 `;
-const InfoContainer = styled.div<{img?: string}>`
+const IconContainer = styled.div<{color?: string}>`
+    border-radius: 0px 20px 20px 0px;
+    background: ${(props) =>
+      props.color ? `${props.color}` : `rgba(228,236,250,0.3)`};
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    background: linear-gradient(0deg,rgba(0,0,0,8),rgba(0,0,0,0.5),rgba(0,0,0,0));
+    align-items: center;
+    align-self: flex-start;
+    padding:10px;
 }
 `;
 
@@ -71,14 +75,22 @@ const InfoContainer = styled.div<{img?: string}>`
               )
             }
         },[]);
+        const iconColor= useCallback((positiveRateValue, negativeRateValue)=>{
+          if(positiveRateValue > negativeRateValue){
+            return 'rgba(81,140,202,1)';
+          } else{
+            return 'rgba(247,143,63, 0.8)';
+          }
+
+        },[]);
 
 
         return(
             <CardContainer img={img}>
               <div css={infoWrapper}>
-                <div css={iconBackground}>
+                <IconContainer color={iconColor(positiveRate, negativeRate)}>
                   {renderIcon(positiveRate, negativeRate)}
-                </div>
+                </IconContainer>
                 <div css={infoCard}>
                   <Text
                       text={title}

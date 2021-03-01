@@ -1,8 +1,5 @@
 .App {
-  text-align: center;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 .App-header {
   background: linear-gradient(180deg,rgba(0,0,0,5),rgba(0,0,0,0.5),rgba(0,0,0,0));
@@ -29,6 +26,7 @@
 }
 
 .App-footer {
+  width: 100%;
   background-color: #2E5FD4;
   min-height: 10vh;
   display: flex;

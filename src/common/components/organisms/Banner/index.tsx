@@ -25,10 +25,11 @@ interface Props {
       justify-content: flex-end;
       border-radius:   0px 0px 10px 10px;
       overflow:hidden;
+      width:100%;
       margin-bottom: 25px;
       background: ${(props) =>
         props.img ? `url(${props.img})` : `rgba(228,236,250,0.3)`};
-        height: 70vh;
+        height: 90vh;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

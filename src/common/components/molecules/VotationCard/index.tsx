@@ -9,7 +9,12 @@ import Button from '../../atoms/Button';
 import PercentageBar from '../PercentageBar';
 import { FiThumbsUp , FiThumbsDown} from "react-icons/fi";
 import Separator from '../../atoms/Separator';
-
+import {
+    SUB_TITLE_TEXT_SIZE,
+    HEADER_TEXT_SIZE,
+    LABEL_TEXT_SIZE,
+    SUB_IMPACT_TEXT_SIZE
+  } from '../.././../ultils/constants/textSize';
 
 
 interface Props {
@@ -21,8 +26,6 @@ interface Props {
     onPressPositive?: () => void;
     onPressNegatieve?: () => void;
   }
-
-
 
   const VotationCard:FC<Props> =(
         {movieTitle,
@@ -39,7 +42,7 @@ interface Props {
                 <div css={infoCard}>
                     <Text
                         text={`${movieProducer} - ${movieTitle}`}
-                        fontSize={30}
+                        fontSize={SUB_IMPACT_TEXT_SIZE}
                         color={'#fefefe'}
                         fontWeight={400}
                     />
@@ -52,7 +55,7 @@ interface Props {
                         <div css={alignCenter} >
                              <Text
                                 text={'Tu voto ha sido registrado!'}
-                                fontSize={24}
+                                fontSize={HEADER_TEXT_SIZE}
                                 color={'#fefefe'}
                                 fontWeight={700}
                              />
@@ -61,7 +64,7 @@ interface Props {
                     <Separator size={10} direction={'horizontal'}/>
                     <Text
                         text={`Gracias por participar en la votación de la película ${movieTitle} seguiremos subiendo contenido :P`}
-                        fontSize={18}
+                        fontSize={SUB_TITLE_TEXT_SIZE}
                         color={'#fefefe'}
                         fontWeight={200}
                     />
@@ -141,18 +144,17 @@ interface Props {
     const fixWidth = css({
         width:'100%,'
         });
-       const backgroundColorPositiveIcon = css({
+    const backgroundColorPositiveIcon = css({
         background:'rgba(81,140,202,1)',
         cursor:'pointer',
         width:60,
         padding:20,
         borderRadius: 5,
        });
-       const bacgroundPostivieVote = css({
+    const bacgroundPostivieVote = css({
         background:'rgba(81,140,202,1)',
         cursor:'pointer',
         padding:10,
-        borderRadius: '5px 0px 0px 5px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -163,7 +165,7 @@ interface Props {
         background:'rgba(247,143,63, 1)',
         cursor:'pointer',
         padding:10,
-        borderRadius: '0px 5px 5px 0px',
+      
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
