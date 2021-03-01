@@ -12,7 +12,13 @@ import {
   } from '../.././../ultils/constants/textSize';
 
 
-const Notification: FC =()=>{
+  interface Props {
+    title?: string;
+    subTitle?: string;
+    description: string;
+  }
+
+const Notification: FC<Props> =({title,subTitle,description})=>{
     const [visible, setVisible] = useState<boolean>(true);
 
     const closeNotification = useCallback(()=>{
@@ -25,13 +31,13 @@ const Notification: FC =()=>{
                 <Row nogutter css={container}>
                     <Col sm={3} css={rightSide} >
                         <Text
-                            text={'Lorem ipsum'}
+                            text={title ?? ' '}
                             fontSize={SUB_TITLE_TEXT_SIZE}
                             color={'#001A4F'}
                             fontWeight={400}
                         />
                         <Text
-                            text={'IP Lorem Ip'}
+                            text={subTitle ?? ' '}
                             fontSize={HEADER_TEXT_SIZE}
                             color={'#001A4F'}
                             fontWeight={800}
@@ -39,7 +45,7 @@ const Notification: FC =()=>{
                     </Col>
                     <Col  sm={7} css={midSide}>
                     <Text
-                            text={'Este es Este es un componente para notificaciones, aquEste es un componente para notificaciones, aquun componente para notificaciones, aquí se agregará información relevante para el usuario ->'}
+                            text={description}
                             fontSize={LABEL_TEXT_SIZE}
                             color={'#001A4F'}
                             fontWeight={400}

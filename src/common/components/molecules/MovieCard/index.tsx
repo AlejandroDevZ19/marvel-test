@@ -13,6 +13,7 @@ import { FiThumbsUp , FiThumbsDown} from "react-icons/fi";
 interface Props {
     img: string;
     title: string;
+    publicationDate?: string,
     description: string;
     positiveRate: number;
     negativeRate: number;
@@ -56,6 +57,7 @@ const IconContainer = styled.div<{color?: string}>`
   const MovieCard: FC<Props> =(
     { title,
       description,
+      publicationDate,
       img,
       positiveRate,
       negativeRate}) =>{
@@ -75,6 +77,7 @@ const IconContainer = styled.div<{color?: string}>`
               )
             }
         },[]);
+
         const iconColor= useCallback((positiveRateValue, negativeRateValue)=>{
           if(positiveRateValue > negativeRateValue){
             return 'rgba(81,140,202,1)';
@@ -88,9 +91,11 @@ const IconContainer = styled.div<{color?: string}>`
         return(
             <CardContainer img={img}>
               <div css={infoWrapper}>
+                <div css={GeneralinfoWrapper}>
                 <IconContainer color={iconColor(positiveRate, negativeRate)}>
                   {renderIcon(positiveRate, negativeRate)}
                 </IconContainer>
+               
                 <div css={infoCard}>
                   <Text
                       text={title}
@@ -110,6 +115,15 @@ const IconContainer = styled.div<{color?: string}>`
                       outline
                       />
                 </div>
+                </div>
+                <div css={timeText}>
+                  <Text
+                    text={'Hace 1 mes'}
+                    fontSize={16}
+                    color={'#fefefe'}
+                    fontWeight={400}
+                    />
+                </div>
               </div>
               
               
@@ -127,21 +141,25 @@ const IconContainer = styled.div<{color?: string}>`
     padding:5,
     marginBottom:15,
     overflow:'hidden',
-    
     });
-  const iconBackground = css({
-      padding:10,
-      borderRadius: '0px 20px 20px 0px',
+    const timeText = css({
       display:'flex',
       flexDirection:'column',
-      alignSelf:'flex-start',
-      alignItems: 'center',
-      background: 'rgba(81,140,202,1)',
+      justifyContent:'flex-end',
+      padding:5,
+      marginBottom:15,
+      marginRight:10,
       });
+      const GeneralinfoWrapper=css({
+        display:'flex',
+        flexDirection:'row', 
+        justifyContent:'space-between',
+      });
+
 
   const infoWrapper = css({
     display:'flex',
-    flexDirection:'row',
-   
+    flexDirection:'row', 
+    justifyContent:'space-between',
     background: 'linear-gradient(0deg,rgba(0,0,0,8),rgba(0,0,0,0.5),rgba(0,0,0,0))',
   })

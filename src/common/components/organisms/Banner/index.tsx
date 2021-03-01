@@ -39,6 +39,15 @@ interface Props {
       &:hover { 
   }
 `;
+const CardWrapper = styled.div<{img?: string}>`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+}
+`;
 
   const Banner: FC<Props> =(
     { title,
@@ -84,16 +93,18 @@ interface Props {
     return(
         <BannerContainer img={img}>
             <div css={infoWrapper}>
+              <CardWrapper >
                 <Col xs={12} md={12} sm={12} lg={6} xl={6} xxl={6}>
-                    <VotationCard  
+                      <VotationCard  
                         movieTitle={'Ironman'} 
-                        movieDescription={'Gracias al sacrificio de Tony Stark en Avengers EndGame podemos ver WandaVision por Disney+ :) '}
+                        movieDescription={'Gracias al sacrificio de Tony Stark en Avengers EndGame podemos ver WandaVision por Disney+ :) Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
                         movieProducer={'Marvel'}
                         bodyRender={alreadyRate}
                         onPressRateAgain={()=>rateAgain()}
                         onPressNegatieve={()=>saveNegativeRate()}
                         onPressPositive={()=>savePositiveRate()}/>
-                </Col>
+                  </Col>
+              </CardWrapper>     
             </div>
                 
                 
@@ -107,6 +118,12 @@ interface Props {
   const infoWrapper = css({
     display:'flex',
     flexDirection:'row',
+    justifyContent:'center',
     width:'100%',
     background: 'linear-gradient(0deg,rgba(0,0,0,8),rgba(0,0,0,0.5),rgba(0,0,0,0))',
-  })
+  });
+  const cardWrapper = css({
+    display:'flex',
+    flexDirection:'row',
+    width:'80%',
+  });

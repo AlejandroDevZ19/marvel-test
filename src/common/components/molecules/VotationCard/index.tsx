@@ -136,10 +136,12 @@ interface Props {
     background: 'rgba(0,0,0,0.3)',
     display:'flex',
     flexDirection:'column',
-    padding:25,
-    margin:25,
+    padding:30,
     backdropFilter: 'blur(5px)',
     borderRadius:10,
+
+    justifyContent:'space-between',
+    marginBottom:30,
     });
     const fixWidth = css({
         width:'100%,'

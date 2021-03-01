@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import {Route, Routes, Navigate, useLocation} from 'react-router-dom';
 import {Col,Row, Container} from 'react-grid-system';
 import GlobalFooter from './common/components/organisms/GlobalFooter';
+import GlobalHeader from './common/components/organisms/GobalHeader'
 import styled from '@emotion/styled/';
 
 const AppContainer = styled.div<{img?: string}>`
@@ -25,12 +26,10 @@ function App() {
   return (
     <AppContainer>
       <header className="App-header">
-        <p>Soy el menu papurris</p>
+        <GlobalHeader/>
       </header>
-       
           <Home/>
-      
-      <footer>
+      <footer className="App-footer">
         <GlobalFooter/>
       </footer>
     </AppContainer>  

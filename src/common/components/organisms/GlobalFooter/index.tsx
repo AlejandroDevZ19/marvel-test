@@ -10,40 +10,34 @@ import { FiFacebook , FiInstagram} from "react-icons/fi";
 import { FaFacebookSquare,FaInstagramSquare } from "react-icons/fa";
 import Separator from '../../atoms/Separator';
 
+const FooterContainer = styled.div<{img?: string}>`
+    display: flex;
+    flex-direction: column;
+   
+    width: 80%;
+    @media (max-width: 768px) {
+      width: 90%;
+    }
 
+}
+`;
 
 const GlobalFooter: FC =()=>{
     return(
-        <Container>
+        <div css={footerContainer}>
+            <FooterContainer>
             <Separator size={50} direction={'horizontal'} showLine/>
-            <Row>
-                <Col>
-                    <Text
-                        text={'Téminos y condiciones'}
-                        fontSize={16}
-                        color={'#001A4F'}
-                        fontWeight={400}
-                        href={'https://marvel-alejandro-zuniga.web.app/'}
-                    />
-                </Col>
-                <Col>
-                    <Text
-                        text={'Política de tratamiento de datos'}
-                        fontSize={16}
-                        color={'#001A4F'}
-                        fontWeight={400}
-                    />
-                </Col>
-                <Col>
+            
+            <div css={textContainer}>
+               
                     <Text
                         text={'Contactenos'}
                         fontSize={16}
                         color={'#001A4F'}
                         fontWeight={400}
                     />
-                </Col>
-                <Col>
-                    <Row>
+        
+                    <div css={iconSide}> 
                         <Text
                             text={'Síguenos'}
                             fontSize={16}
@@ -52,12 +46,15 @@ const GlobalFooter: FC =()=>{
                         />
                         <FaFacebookSquare  color={'#001A4F'} size={22}/>
                         <FaInstagramSquare  color={'#001A4F'} size={22}/>
-                    </Row>   
-                </Col>
+                    </div>   
 
-            </Row>
+            </div>
+
+           
+            
         <Separator size={50} direction={'horizontal'}/>
-        </Container>
+        </FooterContainer>
+        </div>
      
     )
 }
@@ -66,6 +63,18 @@ export default memo(GlobalFooter);
 
 const footerContainer = css({
     display:'flex',
-    flexDirection:'row',
-    padding:5,
+    flexDirection:'column',
+    width:'100%',
+    alignItems:'center',
     });
+    const iconSide = css({
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        });
+        const textContainer=css({
+            width:'100%',
+            display:'flex',
+            flexDirection:'row',
+            justifyContent:'space-between'
+        });

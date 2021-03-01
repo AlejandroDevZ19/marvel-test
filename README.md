@@ -1,3 +1,20 @@
+# Desarrolo para prubas técnicas Existaya
+
+    *Este proyecto lo desarrollé con React.
+    *Cada parte del front está desarrollado con componentes funcionales con sus respectivos Props (atributos del componente).
+    *Para la creación de componentes me basé en el modelo 'AtomicDesign' el cual consiste en agrupar los componentes por su "tamaño" 
+        Ejemplo: Atomos: botones, titulos, iconos.
+                Moleculas: Cards.
+                Organismos: Modales, elementos que contengan combinacion de atomos y moleculas.
+    *Como no estoy usando una conexion a un servidor directamente, algunos datos como el de la lista de películas se setearon con un Fake Json (dejando listo para que funcione cuando backend responda con datos reales).
+    *Para correr el poryecto se debe tener instalado todo lo de react, luego de abrir el proyecto se debe ejecutar el comando: Yarn Install
+    para instalar todas las dependencias.
+    * y bueno por ultimo, tener en cuenta que algunas cosas de UI no estás de todo perfectas, esto debido a que el tiempo fue una limitación para mi desarrollo. 
+
+    #Gracias!
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

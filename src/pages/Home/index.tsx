@@ -38,6 +38,7 @@ const Home: FC = ()=>{
         }, {
             id: 2,
             title: 'Thor 2',
+            publicationDate: '',
             description: 'Película del Dios del trueno',
             img: 'https://wallpapersplanet.net/sites/default/files/thor-wallpapers-40454-690098.png',
             positiveRate: 10, 
@@ -45,6 +46,7 @@ const Home: FC = ()=>{
         },{
             id: 3,
             title: 'Batman',
+            publicationDate: '',
             description: 'Yo menos xD',
             img: 'https://i1.wp.com/www.canalfreak.net/wp-content/uploads/2018/07/batman-el-caballero-oscuro-de-la-noche.jpg?resize=1154%2C640',
             positiveRate: 10, 
@@ -52,6 +54,7 @@ const Home: FC = ()=>{
         },{
             id: 4,
             title: 'Spiderman',
+            publicationDate: '',
             description: 'Petter Parker is back :D',
             img: 'https://www.mandatory.com/assets/uploads/2011/09/file_174882_0_spidey_retro_header-1280x720.jpg',
             positiveRate: 10, 
@@ -77,12 +80,16 @@ return(
         <div css={alignCenter}>
             <BodyContainer>
                 <Separator size={15} direction={'horizontal'}/>
-                <Notification />
+                <Notification
+                   title={'Lorem Ipsum'}
+                    subTitle={'IP Lorem ip'}
+                    description={'Lorem Ipsum is simply dummy text of the printing and typesetting. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
+                />
                 <Separator size={40} direction={'horizontal'}/>
-                <div >
+                <div css={fillWidth}>
                     <Text
                         text={'Super heroes anteriores'}
-                        fontSize={40}
+                        fontSize={35}
                         color={'#001A4F'}
                         fontWeight={800}
                     /> 
